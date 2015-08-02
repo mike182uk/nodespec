@@ -1,0 +1,14 @@
+{
+  "specPath": "spec",
+  "srcPath": "src",
+  "specSuffix": "Spec",
+  "runner": {
+    "spec_dir": "spec",
+    "spec_files": [
+      "**/*[sS]pec.js"
+    ],
+    "helpers": [
+      "helpers/**/*.js"
+    ]
+  }
+}
