@@ -7,7 +7,7 @@
     "specs": "jasmine",
     "examples": "cucumber.js",
     "cs": "jscs src/",
-    "all": "npm run spec && npm run examples && npm run cs"
+    "all": "npm run specs && npm run examples && npm run cs"
   },
   "author": "Michael David Barrett <mike182uk@gmail.com>",
   "license": "MIT",
