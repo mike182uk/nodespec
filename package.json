@@ -1,7 +1,7 @@
 {
   "name": "@mike182uk/nodespec",
   "homepage": "https://github.com/mike182uk/nodespec",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A tool to help drive emergent design by specification in Node.JS",
   "scripts": {
     "specs": "jasmine",
