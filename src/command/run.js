@@ -53,7 +53,6 @@ function register(app) {
 
 function run(app, spec) {
   var config = app.getConfig();
-  var originalSpec = spec;
 
   // Make sure the runner is initialized before we run anything
   initRunnerConfig(app);
@@ -64,7 +63,7 @@ function run(app, spec) {
 
   // If spec arg does not contain .js we will assume this is actually
   // the name of the object rather than a path to the spec itself
-  if (spec.indexOf('.js') == -1) {
+  if (spec.indexOf('.js') === -1) {
     spec = specification(spec, config.specPath, config.specSuffix);
   } else {
     spec = specification.fromPath(spec, config.specPath, config.specSuffix);
@@ -94,7 +93,7 @@ function runAllSpecs(app) {
   var srcFileObjectHash = {};
 
   _.each(specs, function(spec) {
-    spec = specification.fromPath(spec, config.specPath, config.specSuffix)
+    spec = specification.fromPath(spec, config.specPath, config.specSuffix);
 
     var object = spec.getPrefixedObjectName();
     var srcAbosultePath = path.join(srcPath, object + '.js');
@@ -120,7 +119,6 @@ function runAllSpecs(app) {
  */
 
 function runSingleSpec(spec, srcPath, app) {
-  var specAbsolutePath = spec.getAbsolutePath();
   var object = spec.getPrefixedObjectName();
   var srcAbosultePath = path.join(process.cwd(), srcPath, object + '.js');
 
@@ -153,7 +151,7 @@ function promptSrcFilesCreation(srcFileObjectMap, app) {
 
   inquirer.prompt(questions, function(answers) {
     _.each(answers, function(answer, object) {
-      if (answer == 'y') {
+      if (answer === 'y') {
         var srcFilePath = srcFileObjectMap[object];
 
         var template = app.getTemplate(OBJECT_TEMPLATE, {
@@ -190,7 +188,7 @@ function createQuestion(object) {
     message: object + ' does not exist. Shall i create it for you?',
     default: 'y',
     validate: function(value) {
-      return value.match(/^(y|n)$/) ? true : 'Please answer y or n'
+      return value.match(/^(y|n)$/) ? true : 'Please answer y or n';
     },
   }
 }
@@ -258,7 +256,7 @@ function runRunner(specRelativePath) {
     args.push(specRelativePath);
   }
 
-  var runner = spawn(RUNNER_BIN, args, {
+  spawn(RUNNER_BIN, args, {
     stdio: 'inherit',
   });
 }
