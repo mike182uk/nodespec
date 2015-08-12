@@ -7,6 +7,8 @@ A tool to help drive emergent design by specification in Node.JS
 
 Inspired by [PHPSpec](http://www.phpspec.net/). See [here](http://www.phpspec.net/en/latest/manual/introduction.html) for a good intro into Spec BDD :)
 
+**Project still in development, see the issue tracker for bugs, feature requests etc.**
+
 ![](example.gif)
 
 ##Installation
