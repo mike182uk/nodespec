@@ -2,7 +2,7 @@
   "name": "nodespec",
   "homepage": "https://github.com/mike182uk/nodespec",
   "version": "0.1.0",
-  "description": "",
+  "description": "A tool to help drive emergent design by specification in Node.JS",
   "scripts": {
     "specs": "jasmine",
     "examples": "cucumber.js",
