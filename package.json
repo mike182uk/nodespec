@@ -1,5 +1,5 @@
 {
-  "name": "nodespec",
+  "name": "@mike182uk/nodespec",
   "homepage": "https://github.com/mike182uk/nodespec",
   "version": "0.1.0",
   "description": "A tool to help drive emergent design by specification in Node.JS",

@@ -14,7 +14,7 @@ Inspired by [PHPSpec](http://www.phpspec.net/). See [here](http://www.phpspec.ne
 ##Installation
 
 ```bash
-npm install nodespec --save-dev 
+npm install @mike182uk/nodespec --save-dev 
 ```
 
 ##Usage
