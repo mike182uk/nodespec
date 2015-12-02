@@ -3,7 +3,7 @@
  */
 
 var baseCommand = require('./command');
-var clc = require('cli-color');
+var chalk = require('chalk');
 var file = require('./file');
 var mustache = require('mustache');
 var path = require('path');
@@ -114,7 +114,7 @@ function application(version, templatesPath, config) {
      */
 
     error: function(message) {
-      console.log(clc.red(message));
+      console.log(chalk.red(message));
     },
 
     /**
@@ -124,7 +124,7 @@ function application(version, templatesPath, config) {
      */
 
     success: function(message) {
-      console.log(clc.green(message));
+      console.log(chalk.green(message));
     },
 
     /**
@@ -134,7 +134,7 @@ function application(version, templatesPath, config) {
      */
 
     info: function(message) {
-      console.log(clc.blue(message));
+      console.log(chalk.blue(message));
     },
   }
 }

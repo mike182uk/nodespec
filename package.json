@@ -16,7 +16,7 @@
     "nodespec": "index.js"
   },
   "dependencies": {
-    "cli-color": "^1.0.0",
+    "chalk": "^1.1.1",
     "commander": "^2.8.1",
     "glob": "^5.0.14",
     "inquirer": "^0.9.0",
