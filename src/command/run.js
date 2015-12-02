@@ -4,10 +4,9 @@
 
 var _ = require('lodash');
 var command = require('../command');
-var fs = require('fs');
+var file = require('../file');
 var glob = require('glob');
 var inquirer = require('inquirer');
-var mkdirp = require('mkdirp');
 var path = require('path');
 var spawn = require('child_process').spawn;
 var specification = require('../specification');
@@ -69,7 +68,7 @@ function run(app, spec) {
     spec = specification.fromPath(spec, config.specPath, config.specSuffix);
   }
 
-  if (!fs.existsSync(spec.getAbsolutePath())) {
+  if (!file(spec.getAbsolutePath()).exists()) {
     return app.error('Spec not found at ' + spec.getAbsolutePath());
   }
 
@@ -98,7 +97,7 @@ function runAllSpecs(app) {
     var object = spec.getPrefixedObjectName();
     var srcAbosultePath = path.join(srcPath, object + '.js');
 
-    if (!fs.existsSync(srcAbosultePath)) {
+    if (!file(srcAbosultePath).exists()) {
       srcFileObjectHash[object] = srcAbosultePath;
     }
   });
@@ -124,7 +123,7 @@ function runSingleSpec(spec, srcPath, app) {
 
   // If the src file for the spec does not exist, ask the
   // user if they want to create it
-  if (!fs.existsSync(srcAbosultePath)) {
+  if (!file(srcAbosultePath).exists()) {
     var srcFileObjectHash = {};
 
     srcFileObjectHash[object] = srcAbosultePath;
@@ -158,9 +157,7 @@ function promptSrcFilesCreation(srcFileObjectMap, app) {
           object: object,
         });
 
-        createSrcFileDirectory(srcFilePath, object);
-
-        fs.writeFileSync(srcFilePath, template);
+        file(srcFilePath).create(template);
 
         app.success(object + ' created at ' + srcFilePath);
       }
@@ -194,29 +191,6 @@ function createQuestion(object) {
 }
 
 /**
- * Create required directories for the src file
- *
- * @param {String} srcFile
- * @param {String} object
- */
-
-function createSrcFileDirectory(srcFile, object) {
-  var toReplace;
-
-  if (object.lastIndexOf('/') !== -1) {
-    toReplace = object.slice(object.lastIndexOf('/')) + '.js';
-  } else {
-    toReplace = object + '.js';
-  }
-
-  var path = srcFile.replace(toReplace, '');
-
-  if (!fs.existsSync(path)) {
-    mkdirp.sync(path);
-  }
-}
-
-/**
  * Initialize the runner config if it has not already been initialized
  *
  * @param {Object} app
@@ -229,16 +203,12 @@ function initRunnerConfig(app) {
     config.specPath,
     RUNNER_CONFIG_FILE
   );
-  var runnerConfigFilePathInfo = path.parse(runnerConfigFilePath);
+  var runnerConfigFile = file(runnerConfigFilePath);
 
-  if (!fs.existsSync(runnerConfigFilePathInfo.dir)) {
-    mkdirp.sync(runnerConfigFilePathInfo.dir);
-  }
-
-  if (!fs.existsSync(runnerConfigFilePath)) {
+  if (!runnerConfigFile.exists()) {
     var data = JSON.stringify(config.runner, null, 2);
 
-    fs.writeFileSync(runnerConfigFilePath, data);
+    runnerConfigFile.create(data);
   }
 }
 

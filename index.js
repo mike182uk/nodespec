@@ -1,16 +1,17 @@
 #! /usr/bin/env node
 
-var fs = require('fs');
+var file = require('./src/file');
 var application = require('./src/application');
+var path = require('path');
 var pkg = require('./package.json');
 
 /**
  * Initialize application
  */
 
-var templatesPath = __dirname + '/resource/template';
-var configPath = process.cwd() + '/' + application.getConfigFilename();
-var config = fs.existsSync(configPath) ? require(configPath) : {};
+var templatesPath = path.join(__dirname, 'resource', 'template');
+var configPath = path.join(process.cwd(), application.getConfigFilename());
+var config = file(configPath).exists() ? require(configPath) : {};
 
 var app = application(pkg.version, templatesPath, config);
 

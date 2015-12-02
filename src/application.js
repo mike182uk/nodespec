@@ -4,7 +4,7 @@
 
 var baseCommand = require('./command');
 var clc = require('cli-color');
-var fs = require('fs');
+var file = require('./file');
 var mustache = require('mustache');
 var path = require('path');
 
@@ -102,7 +102,7 @@ function application(version, templatesPath, config) {
       vars = vars || {};
 
       var path = this.getTemplatePath(template);
-      var template = fs.readFileSync(path).toString();
+      var template = file(path).read();
 
       return mustache.render(template, vars);
     },

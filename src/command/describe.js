@@ -4,8 +4,7 @@
 
 var _ = require('lodash');
 var command = require('../command');
-var fs = require('fs');
-var mkdirp = require('mkdirp');
+var file = require('../file');
 var path = require('path');
 var specification = require('../specification');
 
@@ -58,36 +57,51 @@ function describe(app, object) {
 
   var config = app.getConfig();
   var spec = specification(object, config.specPath, config.specSuffix);
-  var specDir = spec.getAbsoluteDirectory();
-
-  // Create the directories for the spec if they do not exist
-  if (!fs.existsSync(specDir)) {
-    mkdirp.sync(specDir);
-  }
-
-  // Create the spec if it does not exist
   var specPathAbsolute = spec.getAbsolutePath();
+  var specFile = file(specPathAbsolute);
 
-  if (!fs.existsSync(specPathAbsolute)) {
-    var depth = spec.getRelativePath()
-                  .match(/\//g)
-                  .length;
-
-    var srcPathRelative = path.join(
-      _.repeat('../', depth),
-      config.srcPath,
-      spec.getPrefixedObjectName() + '.js'
-    );
-
-    var template = app.getTemplate(SPEC_TEMPLATE, {
-      object: spec.getObjectName(),
-      srcPathRelative: srcPathRelative,
-    });
-
-    fs.writeFileSync(specPathAbsolute, template);
+  if (!specFile.exists()) {
+    specFile.create(getSpecFileContents(spec, app));
 
     app.success('Spec for ' + object + ' created at ' + specPathAbsolute);
   } else {
     app.info('Spec for ' + object + ' already exists');
   }
+}
+
+/**
+ * Get the parsed contents for the spec file
+ *
+ * @param {Object} spec
+ * @param {Object} app
+ * @return {String}
+ */
+
+function getSpecFileContents(spec, app) {
+  var config = app.getConfig();
+
+  return app.getTemplate(SPEC_TEMPLATE, {
+    object: spec.getObjectName(),
+    srcPathRelative: getSrcPathRelative(spec, config.srcPath),
+  });
+}
+
+/**
+ * Get the relative path to the associated src file
+ *
+ * @param {Object} spec
+ * @param {Object} app
+ * @return {String}
+ */
+
+function getSrcPathRelative(spec, srcPath) {
+  var depth = spec.getRelativePath()
+    .match(/\//g)
+    .length;
+
+  return path.join(
+    _.repeat('../', depth),
+    srcPath,
+    spec.getPrefixedObjectName() + '.js'
+  );
 }

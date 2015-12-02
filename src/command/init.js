@@ -4,7 +4,8 @@
 
 var application = require('../application');
 var command = require('../command');
-var fs = require('fs');
+var file = require('../file');
+var path = require('path');
 
 /**
  * Module export
@@ -43,13 +44,15 @@ function register(app) {
  */
 
 function init(app) {
-  var configPath = process.cwd() + '/' + application.getConfigFilename();
+  var configPath = path.join(process.cwd(), application.getConfigFilename());
   var config = app.getConfig();
 
   if (!Object.keys(config).length) {
-    var configTemplate = fs.readFileSync(app.getTemplatePath(CONFIG_TEMPLATE));
+    var configTemplate = file(
+      app.getTemplatePath(CONFIG_TEMPLATE)
+    ).read();
 
-    fs.writeFileSync(configPath, configTemplate);
+    file(configPath).create(configTemplate);
 
     app.success(application.getName() + ' config created at ' + configPath);
   } else {
