@@ -58,6 +58,4 @@ module.exports.World = function(callback) {
   this.readNonProjectFile = function(file) {
     return fs.readFileSync(file, { encoding: 'utf-8'});
   }
-
-  callback();
 }

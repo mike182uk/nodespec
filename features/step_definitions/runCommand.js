@@ -5,7 +5,7 @@ var APP_CONFIG_FILE_NAME = require('../../src/application').getConfigFilename();
 var execOutput;
 
 module.exports = function() {
-  this.When(/^I execute the run command and answer "([^"]*)" to the question$/, function (answer, callback) {
+  this.When(/^I execute the run command and answer "([^"]*)" to the question$/, function (answer) {
     answer = answer + '\n'; // add a new line to register the input
 
     return this.execInteractive('nodespec run', answer) // returns promise
@@ -14,7 +14,7 @@ module.exports = function() {
             });
   });
 
-  this.When(/^I execute the run command and answer "([^"]*)" to the questions$/, function (answers, callback) {
+  this.When(/^I execute the run command and answer "([^"]*)" to the questions$/, function (answers) {
     answers = answers.split(',').join('\n') + '\n';
 
     return this.execInteractive('nodespec run', answers) // returns promise
@@ -23,7 +23,7 @@ module.exports = function() {
             });
   });
 
-  this.When(/^I execute the run command with the argument "([^"]*)" and answer "([^"]*)" to the question$/, function (argument, answer, callback) {
+  this.When(/^I execute the run command with the argument "([^"]*)" and answer "([^"]*)" to the question$/, function (argument, answer) {
     var config = JSON.parse(this.readFile(APP_CONFIG_FILE_NAME));
 
     answer = answer + '\n'; // add a new line to register the input
