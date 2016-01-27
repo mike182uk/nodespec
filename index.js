@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
 var file = require('./src/file');
 var application = require('./src/application');
