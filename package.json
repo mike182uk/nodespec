@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "child_pty": "^3.0.1",
-    "cucumber": "^0.9.2",
+    "cucumber": "^0.9.4",
     "jscs": "^2.0.0",
     "rewire": "^2.5.1",
     "rimraf": "^2.4.2",
