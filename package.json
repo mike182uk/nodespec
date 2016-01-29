@@ -21,7 +21,7 @@
     "glob": "^6.0.3",
     "inquirer": "^0.11.1",
     "jasmine": "^2.3.1",
-    "lodash": "^3.10.0",
+    "lodash": "^4.1.0",
     "mkdirp": "^0.5.1",
     "mustache": "^2.1.3"
   },
