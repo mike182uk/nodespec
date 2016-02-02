@@ -62,7 +62,7 @@ function application(version, templatesPath, config) {
     /**
      * Add a command to the application
      *
-     * @param {String} cmd
+     * @param {Object<Command>} command
      */
 
     addCommand: function(command) {
@@ -102,7 +102,7 @@ function application(version, templatesPath, config) {
       vars = vars || {};
 
       var path = this.getTemplatePath(template);
-      var template = file(path).read();
+      template = file(path).read();
 
       return mustache.render(template, vars);
     },

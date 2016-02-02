@@ -95,10 +95,10 @@ function runAllSpecs(app) {
     spec = specification.fromPath(spec, config.specPath, config.specSuffix);
 
     var object = spec.getPrefixedObjectName();
-    var srcAbosultePath = path.join(srcPath, object + '.js');
+    var srcAbsolutePath = path.join(srcPath, object + '.js');
 
-    if (!file(srcAbosultePath).exists()) {
-      srcFileObjectHash[object] = srcAbosultePath;
+    if (!file(srcAbsolutePath).exists()) {
+      srcFileObjectHash[object] = srcAbsolutePath;
     }
   });
 
@@ -119,14 +119,14 @@ function runAllSpecs(app) {
 
 function runSingleSpec(spec, srcPath, app) {
   var object = spec.getPrefixedObjectName();
-  var srcAbosultePath = path.join(process.cwd(), srcPath, object + '.js');
+  var srcAbsolutePath = path.join(process.cwd(), srcPath, object + '.js');
 
   // If the src file for the spec does not exist, ask the
   // user if they want to create it
-  if (!file(srcAbosultePath).exists()) {
+  if (!file(srcAbsolutePath).exists()) {
     var srcFileObjectHash = {};
 
-    srcFileObjectHash[object] = srcAbosultePath;
+    srcFileObjectHash[object] = srcAbsolutePath;
 
     return promptSrcFilesCreation(srcFileObjectHash, app);
   }
@@ -216,7 +216,7 @@ function initRunnerConfig(app) {
  * Run the runner for a given spec or all the specs
  * if `specRelativePath` is omitted
  *
- * @param {String}
+ * @param {String} specRelativePath
  */
 
 function runRunner(specRelativePath) {

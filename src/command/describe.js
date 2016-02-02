@@ -90,7 +90,7 @@ function getSpecFileContents(spec, app) {
  * Get the relative path to the associated src file
  *
  * @param {Object} spec
- * @param {Object} app
+ * @param {String} srcPath
  * @return {String}
  */
 

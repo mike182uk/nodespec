@@ -113,7 +113,7 @@ function specification(object, specPath, specSuffix) {
 
     getAbsoluteDirectory: function() {
       return this.getAbsolutePath()
-              .replace('/' + this.getFilename(), '');
+        .replace('/' + this.getFilename(), '');
     },
   }
 }
@@ -121,16 +121,16 @@ function specification(object, specPath, specSuffix) {
 /**
  * Create a specification from a path
  *
- * @param {Stirng} path
+ * @param {String} path
  * @param {String} specPath
  * @param {String} specSuffix
  */
 
 specification.fromPath = function(path, specPath, specSuffix) {
   var object = path
-                .replace(process.cwd() + '/', '')
-                .replace(specPath + '/', '')
-                .replace(specSuffix + '.js', '');
+    .replace(process.cwd() + '/', '')
+    .replace(specPath + '/', '')
+    .replace(specSuffix + '.js', '');
 
   return this.apply(this, [object, specPath, specSuffix]);
 }
