@@ -4,7 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var temp = require('temp');
 
-module.exports.World = function(callback) {
+module.exports.World = function() {
   // Temporary project path
   this.projectPath = temp.path({ prefix: 'nodespec-' });
 
@@ -24,9 +24,9 @@ module.exports.World = function(callback) {
   this.execInteractive = function(command, input) {
     var projectPath = this.projectPath;
     var args = command.split(' ');
-    var command = args.shift();
+    command = args.shift();
 
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
       var childProcess = childPty.spawn(command, args, {
         cwd: projectPath
       });

@@ -1,4 +1,4 @@
-var APP_CONFIG_FILE_NAME = require('../../src/application').getConfigFilename();
+const APP_CONFIG_FILE_NAME = require('../../src/application').getConfigFilename();
 
 var execOutput, configContents;
 

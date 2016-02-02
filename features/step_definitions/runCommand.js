@@ -8,19 +8,19 @@ module.exports = function() {
   this.When(/^I execute the run command and answer "([^"]*)" to the question$/, function (answer) {
     answer = answer + '\n'; // add a new line to register the input
 
-    return this.execInteractive('nodespec run', answer) // returns promise
-            .then(function(data) {
-              execOutput = data;
-            });
+    return this.execInteractive('nodespec run', answer)
+      .then(function(data) {
+        execOutput = data;
+      });
   });
 
   this.When(/^I execute the run command and answer "([^"]*)" to the questions$/, function (answers) {
     answers = answers.split(',').join('\n') + '\n';
 
-    return this.execInteractive('nodespec run', answers) // returns promise
-            .then(function(data) {
-              execOutput = data;
-            });
+    return this.execInteractive('nodespec run', answers)
+      .then(function(data) {
+        execOutput = data;
+      });
   });
 
   this.When(/^I execute the run command with the argument "([^"]*)" and answer "([^"]*)" to the question$/, function (argument, answer) {
@@ -29,14 +29,14 @@ module.exports = function() {
     answer = answer + '\n'; // add a new line to register the input
 
     argument = argument
-                .replace('<absoluteSpecPath>', path.join(this.projectPath, config.specPath))
-                .replace('<specPath>', config.specPath)
-                .replace('<specSuffix>', config.specSuffix);
+      .replace('<absoluteSpecPath>', path.join(this.projectPath, config.specPath))
+      .replace('<specPath>', config.specPath)
+      .replace('<specSuffix>', config.specSuffix);
 
-    return this.execInteractive('nodespec run ' + argument, answer) // returns promise
-            .then(function(data) {
-              execOutput = data;
-            });
+    return this.execInteractive('nodespec run ' + argument, answer)
+      .then(function(data) {
+        execOutput = data;
+      });
   });
 
   this.Then(/^I should see that the source file for "([^"]*)" was created$/, function (object, callback) {

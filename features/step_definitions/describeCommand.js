@@ -1,8 +1,8 @@
+const APP_CONFIG_FILE_NAME = require('../../src/application').getConfigFilename();
+
 var specification = require('../../src/specification');
 
-var APP_CONFIG_FILE_NAME = require('../../src/application').getConfigFilename();
-
-var execOutput, specContent;
+var execOutput;
 
 module.exports = function() {
   this.When(/^I describe the object "([^"]*)"$/, function (object, callback) {
