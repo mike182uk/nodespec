@@ -25,9 +25,9 @@ module.exports = runCommand;
  * Constants
  */
 
-var OBJECT_TEMPLATE = 'object.js';
-var RUNNER_CONFIG_FILE = 'support/jasmine.json';
-var RUNNER_BIN = __dirname + '/../../node_modules/.bin/jasmine';
+const OBJECT_TEMPLATE = 'object.js';
+const RUNNER_CONFIG_FILE = 'support/jasmine.json';
+const RUNNER_BIN = __dirname + '/../../node_modules/.bin/jasmine';
 
 /**
  * Register the command with the application

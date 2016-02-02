@@ -18,8 +18,8 @@ module.exports = application;
  * Constants
  */
 
-var APP_NAME = 'Nodespec';
-var CONFIG_FILENAME = 'nodespec.json';
+const APP_NAME = 'Nodespec';
+const CONFIG_FILENAME = 'nodespec.json';
 
 /**
  * Main application
