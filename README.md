@@ -13,6 +13,10 @@ Inspired by [PHPSpec](http://www.phpspec.net/). See [here](http://www.phpspec.ne
 
 ![](example.gif)
 
+## Prerequisites
+
+- node >= 0.12
+
 ## Installation
 
 ```bash
