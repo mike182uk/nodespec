@@ -1,9 +1,6 @@
-# Nodespec
+#### ⚠️ This project is no longer maintained
 
-[![Version](https://img.shields.io/npm/v/@mike182uk/nodespec.svg?style=flat-square)](https://www.npmjs.com/package/@mike182uk/nodespec)
-[![Build Status](https://img.shields.io/travis/mike182uk/nodespec.svg?style=flat-square)](http://travis-ci.org/mike182uk/nodespec)
-[![Code Climate](https://img.shields.io/codeclimate/github/mike182uk/nodespec.svg?style=flat-square)](https://codeclimate.com/github/mike182uk/nodespec)
-[![License](https://img.shields.io/github/license/mike182uk/timestring.svg?style=flat-square)](https://www.npmjs.com/package/@mike182uk/nodespec)
+# Nodespec
 
 A tool to help drive emergent design by specification in Node.JS
 
